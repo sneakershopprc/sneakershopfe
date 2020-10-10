@@ -148,7 +148,11 @@
                         class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 white--text"
                         style="height: 100%"
                       >
-                        <v-btn v-if="hover" :href="'/product?productId='+ pro.productId" class="" outlined
+                        <v-btn
+                          v-if="hover"
+                          :href="'/product?productId=' + pro.productId"
+                          class=""
+                          outlined
                           >VIEW</v-btn
                         >
                       </div>
@@ -156,9 +160,11 @@
                   </v-img>
                   <v-card-text class="text--primary">
                     <div>
-                      <a :href="'/product?productId='+ pro.productId" style="text-decoration: none">{{
-                        pro.productNm
-                      }}</a>
+                      <a
+                        :href="'/product?productId=' + pro.productId"
+                        style="text-decoration: none"
+                        >{{ pro.productNm }}</a
+                      >
                     </div>
                     <div
                       style="
@@ -330,21 +336,15 @@ export default {
     changeOrderBy() {
       switch (this.sortBy) {
         case 0:
-          this._setProductList(
-            this._productList.sort((a, b) =>
-              a.productNm > b.productNm ? 1 : -1
-            )
+          this._productList.sort((a, b) =>
+            a.productNm > b.productNm ? 1 : -1
           );
           break;
         case 1:
-          this._setProductList(
-            this._productList.sort((a, b) => (a.price > b.price ? 1 : -1))
-          );
+          this._productList.sort((a, b) => (a.price > b.price ? 1 : -1));
           break;
         case 2:
-          this._setProductList(
-            this._productList.sort((a, b) => (a.price > b.price ? -1 : 1))
-          );
+          this._productList.sort((a, b) => (a.price > b.price ? -1 : 1));
           break;
       }
     },

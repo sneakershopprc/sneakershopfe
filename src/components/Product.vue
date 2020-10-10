@@ -37,14 +37,6 @@
               ${{ currentDetail.price }}
             </p>
             <v-spacer></v-spacer>
-            <v-rating
-              v-model="rating"
-              class=""
-              background-color="warning lighten-3"
-              color="warning"
-              dense
-            ></v-rating>
-            <span class="body-2 font-weight-thin"> 25 REVIEWS</span>
           </v-card-actions>
           <p class="title">SIZE</p>
           <v-radio-group v-model="currentSize" row @change="changeSize()">
@@ -75,7 +67,24 @@
             @click="addToCart()"
             ><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn
           >
-          <v-btn class="ml-4" outlined tile>ADD TO WISHLIST</v-btn>
+          <v-btn
+            class="ml-4"
+            outlined
+            tile
+            v-if="!isLiked"
+            :loading="isLoading"
+            @click="addToWishlist()"
+            ><v-icon>mdi-heart</v-icon> ADD TO WISHLIST</v-btn
+          >
+          <v-btn
+            class="ml-4"
+            outlined
+            tile
+            :loading="isLoading"
+            v-if="isLiked"
+            @click="removeFromWishlist()"
+            ><v-icon>mdi-heart-broken</v-icon> REMOVE FROM WISHLIST</v-btn
+          >
         </div>
       </div>
     </div>
@@ -208,9 +217,12 @@ import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   computed: {
     ...mapState("productDetail", ["_productDetail"]),
+    ...mapState("wishlist", ["_productInWishlist"]),
     ...mapState("product", ["_productList", "_totalCount", "_totalPage"]),
   },
   data: () => ({
+    isLoading: false,
+    isLiked: false,
     quantity: 1,
     maxQuantity: 1,
     currentDetail: {},
@@ -233,65 +245,49 @@ export default {
         href: "breadcrumbs_shirts",
       },
     ],
-    item: 5,
-    items: [
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-        title: "Lorem ipsum dolor?",
-        subtitle:
-          "<span class='text--primary'>Ali Connors</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl tincidunt eget nullam non. Tincidunt arcu non sodales neque sodales ut etiam. Lectus arcu bibendum at varius vel pharetra. Morbi tristique senectus et netus et malesuada.\n" +
-          "\n",
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-        title:
-          'Lorem ipsum dolor <span class="grey--text text--lighten-1">4</span>',
-        subtitle:
-          "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore",
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-        title: "Lorem ipsum dolor",
-        subtitle:
-          "<span class='text--primary'>Sandra Adams</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-        title: "Lorem ipsum dolor",
-        subtitle: "",
-      },
-      {
-        avatar: "https://cdn.vuetifyjs.com/images/lists/5.jpg",
-        title: "Lorem ipsum dolor",
-        subtitle:
-          "<span class='text--primary'>Britta Holt</span> &mdash; Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      },
-    ],
   }),
   mounted() {
     this.initPage();
   },
   methods: {
     ...mapActions("productDetail", ["_getProductDetail"]),
+    ...mapMutations("productDetail", ["_setProductDetail"]),
     ...mapActions("product", ["_getProductList"]),
     ...mapActions("cart", ["_addItemToCart"]),
+    ...mapActions("wishlist", [
+      "_getProductInWishlist",
+      "_addProductToWishlist",
+      "_removeProductFromWishlist",
+    ]),
     async initPage() {
       var productId = this.$route.query.productId;
       await this._getProductDetail({ productId: productId });
+      ////////////////////////
+      await this._productDetail.productDetailList.sort((a, b) =>
+        a.size > b.size ? 1 : -1
+      );
+      console.log("this._productDetail", this._productDetail);
+      this.currentDetail = this._productDetail.productDetailList[0];
+      this.currentSize = this.currentDetail.size;
+      this.calMaxQuantity();
+      /////////// checkProductIsLiked
+      this.checkProductIsLiked();
+      ////////////////////////
       await this._getProductList({
         Page: Math.floor(Math.random() * 8) + 1,
         SortBy: Math.floor(Math.random() * 3),
         Size: 4,
       });
-      this.currentDetail = this._productDetail.productDetailList[0];
-      this.currentSize = this.currentDetail.size;
-      this.calMaxQuantity();
+    },
+    async checkProductIsLiked() {
+      await this._getProductInWishlist(this._productDetail.productId);
+      this.isLiked = this._productInWishlist != "";
     },
     calMaxQuantity() {
       let cart = localStorage["CART"];
       if (cart != null) {
         cart = JSON.parse(localStorage["CART"]);
-        let i = cart.findIndex((s) => s.DetailId == this.currentDetail.id);
+        let i = cart.findIndex((s) => s.ProductDetailId == this.currentDetail.id);
         if (i == -1) {
           this.maxQuantity = this.currentDetail.quantity;
         } else {
@@ -317,7 +313,7 @@ export default {
         alert("This shoes is sold out!");
       } else {
         this._addItemToCart({
-          DetailId: this.currentDetail.id,
+          ProductDetailId: this.currentDetail.id,
           Size: this.currentDetail.size,
           Quantity: this.quantity,
           Price:
@@ -325,12 +321,25 @@ export default {
               ? this.currentDetail.price * (1 - this._productDetail.discount)
               : this.currentDetail.price,
           Image: this._productDetail.photoList[0],
+          ProductId: this._productDetail.productId,
           ProductNm: this._productDetail.productNm,
           Discount: this._productDetail.discount,
           BrandNm: this._productDetail.brandNm,
         });
         this.calMaxQuantity();
       }
+    },
+    async addToWishlist() {
+      this.isLoading = true;
+      await this._addProductToWishlist(this._productDetail.productId);
+      await this.checkProductIsLiked();
+      this.isLoading = false;
+    },
+    async removeFromWishlist() {
+      this.isLoading = true;
+      await this._removeProductFromWishlist(this._productDetail.productId);
+      await this.checkProductIsLiked();
+      this.isLoading = false;
     },
   },
 };

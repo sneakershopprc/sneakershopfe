@@ -1,5 +1,5 @@
 import SSCore from '../../service/SSCore'
-const API_URL = '/api/Order'
+const API_URL = '/api/Orders'
 const API_URL_Detail = '/api/OrderDetails'
 
 export const cart = {
@@ -21,7 +21,7 @@ export const cart = {
             let cart = localStorage["CART"]
             if (cart != null) {
                 cart = JSON.parse(localStorage["CART"])
-                let i = cart.findIndex(s => s.DetailId == obj.DetailId)
+                let i = cart.findIndex(s => s.ProductDetailId == obj.ProductDetailId)
                 if (i == -1) {
                     // chưa có trong cart
                     cart.push(obj);
@@ -39,7 +39,7 @@ export const cart = {
             let cart = localStorage["CART"]
             if (cart != null) {
                 cart = JSON.parse(localStorage["CART"])
-                let i = cart.findIndex(s => s.DetailId == id)
+                let i = cart.findIndex(s => s.ProductDetailId == id)
                 if (i == -1) {
                 } else {
                     cart.splice(i, 1);
@@ -70,14 +70,11 @@ export const cart = {
                 obj.ReceiverNm = shippingAddress.ReceiverNm
                 obj.Phonenumber = shippingAddress.Phonenumber
                 obj.ShippingAddress = shippingAddress.ShippingAddress
-                obj.Status = "Waiting"
-                obj.OrderDetails = []
-                for (let i = 0; i < cart.length; i++) {
-                    obj.OrderDetails.add(_storeCart[i])
-                }
+                obj.OrderDetails = cart
                 return SSCore.post(API_URL, obj).then(
                     response => {
                         context.commit('_setOrderObj', response.data)
+                        localStorage.removeItem("CART")
                         return response.data
                     },
                     error => {

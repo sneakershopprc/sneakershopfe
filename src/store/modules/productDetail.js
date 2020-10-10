@@ -25,8 +25,8 @@ export const productDetail = {
         }
       )
     },
-    _getDetail (context, DetailId) {
-      return SSCore.get(API_URL_DETAIL + "/" + DetailId).then(
+    _getDetail (context, ProductDetailId) {
+      return SSCore.get(API_URL_DETAIL + "/" + ProductDetailId).then(
         response => {
           context.commit('_setProductDetail', response.data)
           return response.data

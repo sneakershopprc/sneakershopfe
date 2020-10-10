@@ -18,7 +18,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr :key="product.DetailId" v-for="product in cart">
+                <tr :key="product.ProductDetailId" v-for="product in cart">
                   <td>
                     <v-list-item key="1">
                       <v-list-item-avatar height="75" width="120" horizontal>
@@ -26,9 +26,17 @@
                       </v-list-item-avatar>
 
                       <v-list-item-content>
-                        <v-list-item-title>{{
-                          product.ProductNm
-                        }}</v-list-item-title>
+                        <v-list-item-title>
+                          <router-link
+                            :to="{
+                              path: 'product',
+                              query: { productId: product.ProductId },
+                            }"
+                            style="text-decoration: none"
+                          >
+                            {{ product.ProductNm }}</router-link
+                          >
+                        </v-list-item-title>
                         <v-list-item-subtitle>{{
                           product.BrandNm
                         }}</v-list-item-subtitle>
@@ -46,7 +54,7 @@
                       v-model="product.Quantity"
                       type="number"
                       @change="
-                        changeQuantity(product.DetailId, product.Quantity)
+                        changeQuantity(product.ProductDetailId, product.Quantity)
                       "
                     ></v-text-field>
                   </td>
@@ -58,7 +66,7 @@
                     }}
                   </td>
                   <td>
-                    <a @click="removeItemFromCart(product.DetailId)">X</a>
+                    <a @click="removeItemFromCart(product.ProductDetailId)">X</a>
                   </td>
                 </tr>
               </tbody>
@@ -124,7 +132,7 @@
         </v-col>
         <v-col cols="12">
           <h2 style="color: grey; text-align: center">
-            Please go shopping at <a href="/Shop">Here</a>
+            Please go shopping at <a href="/shop">Here</a>
           </h2>
         </v-col>
       </v-row>
@@ -186,7 +194,6 @@ export default {
     cart: [],
     subTotal: 0,
     shippingCharges: 10,
-    rating: 4.5,
     breadcrums: [
       {
         text: "Home",
@@ -230,7 +237,7 @@ export default {
     },
     async changeQuantity(id, quantity) {
       await this._getDetail(id);
-      debugger
+      debugger;
       if (this._productDetail.quantity < quantity) {
         alert("Products in excess of permitted quantity");
         this.initPage();
@@ -239,12 +246,12 @@ export default {
         this.calSubTotal();
       }
     },
-    removeItemFromCart(DetailId) {
-      this._removeItemFromCart(DetailId);
+    removeItemFromCart(ProductDetailId) {
+      this._removeItemFromCart(ProductDetailId);
       this.initPage();
     },
     clickToContinue() {
-      this._checkCart();
+      this.$router.push("/checkout")
     },
   },
 };
