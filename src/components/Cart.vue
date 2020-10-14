@@ -54,7 +54,10 @@
                       v-model="product.Quantity"
                       type="number"
                       @change="
-                        changeQuantity(product.ProductDetailId, product.Quantity)
+                        changeQuantity(
+                          product.ProductDetailId,
+                          product.Quantity
+                        )
                       "
                     ></v-text-field>
                   </td>
@@ -66,7 +69,9 @@
                     }}
                   </td>
                   <td>
-                    <a @click="removeItemFromCart(product.ProductDetailId)">X</a>
+                    <a @click="removeItemFromCart(product.ProductDetailId)"
+                      >X</a
+                    >
                   </td>
                 </tr>
               </tbody>
@@ -216,7 +221,7 @@ export default {
     this.initPage();
   },
   methods: {
-    ...mapActions("cart", ["_removeItemFromCart", "_checkCart"]),
+    ...mapActions("cart", ["_removeItemFromCart"]),
     ...mapActions("productDetail", ["_getDetail"]),
     initPage() {
       if (localStorage["CART"] != null) {
@@ -248,10 +253,11 @@ export default {
     },
     removeItemFromCart(ProductDetailId) {
       this._removeItemFromCart(ProductDetailId);
+      this.$emit("updateCart");
       this.initPage();
     },
     clickToContinue() {
-      this.$router.push("/checkout")
+      this.$router.push("/checkout");
     },
   },
 };

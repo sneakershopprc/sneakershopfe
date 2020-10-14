@@ -47,20 +47,6 @@ export const cart = {
                 localStorage.setItem("CART", JSON.stringify(cart))
             }
         },
-        _checkCart(context) {
-            let cart = localStorage["CART"]
-            if (cart != null) {
-                cart = JSON.parse(localStorage["CART"])
-            }
-            return SSCore.post(API_URL_Detail, cart).then(
-                response => {
-                    return response.data
-                },
-                error => {
-                    return Promise.reject("error")
-                }
-            )
-        },
         _checkOut(context, shippingAddress) {
             let cart = localStorage["CART"]
             if(cart != null){

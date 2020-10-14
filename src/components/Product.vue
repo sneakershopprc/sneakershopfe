@@ -219,6 +219,7 @@ export default {
     ...mapState("productDetail", ["_productDetail"]),
     ...mapState("wishlist", ["_productInWishlist"]),
     ...mapState("product", ["_productList", "_totalCount", "_totalPage"]),
+    ...mapState("auth", ["_status"]),
   },
   data: () => ({
     isLoading: false,
@@ -271,7 +272,9 @@ export default {
       this.currentSize = this.currentDetail.size;
       this.calMaxQuantity();
       /////////// checkProductIsLiked
-      this.checkProductIsLiked();
+      if (this._status.loggedIn) {
+        this.checkProductIsLiked();
+      }
       ////////////////////////
       await this._getProductList({
         Page: Math.floor(Math.random() * 8) + 1,
@@ -287,7 +290,9 @@ export default {
       let cart = localStorage["CART"];
       if (cart != null) {
         cart = JSON.parse(localStorage["CART"]);
-        let i = cart.findIndex((s) => s.ProductDetailId == this.currentDetail.id);
+        let i = cart.findIndex(
+          (s) => s.ProductDetailId == this.currentDetail.id
+        );
         if (i == -1) {
           this.maxQuantity = this.currentDetail.quantity;
         } else {
@@ -307,6 +312,10 @@ export default {
       console.log("this.currentDetail", this.currentDetail);
     },
     addToCart() {
+      if (!this._status.loggedIn) {
+        this.$router.push("login");
+        return;
+      }
       if (this.quantity == 0) {
         alert("This quantity must be more than 1!");
       } else if (this.maxQuantity < this.quantity) {
@@ -327,15 +336,24 @@ export default {
           BrandNm: this._productDetail.brandNm,
         });
         this.calMaxQuantity();
+        this.$emit("updateCart");
       }
     },
     async addToWishlist() {
+      if (!this._status.loggedIn) {
+        this.$router.push("login");
+        return;
+      }
       this.isLoading = true;
       await this._addProductToWishlist(this._productDetail.productId);
       await this.checkProductIsLiked();
       this.isLoading = false;
     },
     async removeFromWishlist() {
+      if (!this._status.loggedIn) {
+        this.$router.push("login");
+        return;
+      }
       this.isLoading = true;
       await this._removeProductFromWishlist(this._productDetail.productId);
       await this.checkProductIsLiked();
@@ -344,20 +362,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.v-card--reveal {
-  align-items: center;
-  bottom: 0;
-  justify-content: center;
-  opacity: 0.8;
-  position: absolute;
-  width: 100%;
-}
-.v-responsive__content .brandName {
-  height: 24px;
-  padding: 0;
-  justify-content: flex-end;
-  font-size: 16px;
-}
-</style>

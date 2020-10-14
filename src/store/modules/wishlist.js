@@ -35,8 +35,8 @@ export const wishlist = {
     },
   },
   actions: {
-    _getAllProductInWishlist(context) {
-      return SSCore.get(API_URL).then(
+    _getAllProductInWishlist(context, obj) {
+      return SSCore.get(API_URL, obj).then(
         response => {
           context.commit('_setWishlist', response.data.data)
           context.commit('_setTotalCount', response.data.totalCount)

@@ -10,8 +10,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@mdi/font": "^5.6.55",
     "axios": "^0.20.0",
     "material-design-icons-iconfont": "^5.0.1",
+    "moment": "^2.29.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuetify": "^2.2.14",

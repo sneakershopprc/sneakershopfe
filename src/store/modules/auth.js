@@ -5,13 +5,13 @@ const API_URL = '/api/v1/Auth'
 const user = JSON.parse(localStorage.getItem('UserInfo'))
 const initialState = user
   ? {
-    status: {
+    _status: {
       loggedIn: true
     },
     user
   }
   : {
-    status: {
+    _status: {
       loggedIn: false
     },
     user: null
@@ -22,22 +22,22 @@ export const auth = {
   state: initialState,
   mutations: {
     _loginSuccess (state, user) {
-      state.status.loggedIn = true
+      state._status.loggedIn = true
       state.user = user
     },
     _loginFailure (state) {
-      state.status.loggedIn = false
+      state._status.loggedIn = false
       state.user = null
     },
     _logout (state) {
-      state.status.loggedIn = false
+      state._status.loggedIn = false
       state.user = null
     },
     _registerSuccess (state) {
-      state.status.loggedIn = false
+      state._status.loggedIn = false
     },
     _registerFailure (state) {
-      state.status.loggedIn = false
+      state._status.loggedIn = false
     }
   },
   actions: {
@@ -59,25 +59,9 @@ export const auth = {
         }
       )
     },
-    _loginWithGoogle (context, idToken) {
-      return SSCore.post(API_URL + '/Google', {
-        idToken: idToken
-      }).then(
-        response => {
-          if (response.data.token) {
-            localStorage.setItem('UserInfo', JSON.stringify(response.data))
-            context.commit('_loginSuccess', user)
-          }
-          return response.data
-        },
-        error => {
-          context.commit('_loginFailure')
-          return Promise.reject(error)
-        }
-      )
-    },
     _logout ({ commit }) {
       localStorage.removeItem('UserInfo')
+      localStorage.clear();
       commit('_logout')
     },
     _register (context, user) {

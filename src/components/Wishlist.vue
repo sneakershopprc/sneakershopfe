@@ -123,7 +123,7 @@ export default {
   data: () => ({
     itemFrom: 1,
     itemTo: 1,
-    sizeOfPage: 9,
+    sizeOfPage: 8,
     page: 1,
     sortBy: 0,
     loading: false,
@@ -161,7 +161,7 @@ export default {
   methods: {
     ...mapActions("wishlist", ["_getAllProductInWishlist"]),
     initData() {
-      this.sizeOfPage = 9;
+      this.sizeOfPage = 8;
       this.page = 1;
     },
     async initPage() {
@@ -180,15 +180,15 @@ export default {
     changeOrderBy() {
       switch (this.sortBy) {
         case 0:
-          this._productList.sort((a, b) =>
-            a.productNm > b.productNm ? 1 : -1
+          this._wishlist.sort((a, b) =>
+            a.product.productNm > b.product.productNm ? 1 : -1
           );
           break;
         case 1:
-          this._productList.sort((a, b) => (a.price > b.price ? 1 : -1));
+          this._wishlist.sort((a, b) => (a.product.price > b.product.price ? 1 : -1));
           break;
         case 2:
-          this._productList.sort((a, b) => (a.price > b.price ? -1 : 1));
+          this._wishlist.sort((a, b) => (a.product.price > b.product.price ? -1 : 1));
           break;
       }
     },
@@ -212,20 +212,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.v-card--reveal {
-  align-items: center;
-  bottom: 0;
-  justify-content: center;
-  opacity: 0.8;
-  position: absolute;
-  width: 100%;
-}
-.v-responsive__content .brandName {
-  height: 24px;
-  padding: 0;
-  justify-content: flex-end;
-  font-size: 16px;
-}
-</style>

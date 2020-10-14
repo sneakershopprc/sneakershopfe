@@ -9,6 +9,8 @@ import Cart from '@/components/Cart'
 import Layout from '@/components/Layout'
 import CheckOut from '@/components/CheckOut'
 import WishList from '@/components/Wishlist'
+import History from '@/components/History'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -22,6 +24,11 @@ export default new Router({
           path: '/',
           component: Home,
           name: 'Home'
+        },
+        {
+          path: '/login',
+          component: Login,
+          name: 'Login'
         },
         {
           path: '/shop',
@@ -52,6 +59,11 @@ export default new Router({
           path: '/wishlist',
           component: WishList,
           name: 'WishList'
+        },
+        {
+          path: '/history',
+          component: History,
+          name: 'History'
         },
         {
           path: '/checkOut',

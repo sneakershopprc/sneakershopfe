@@ -6,6 +6,7 @@ import { product } from './modules/product'
 import { productDetail } from './modules/productDetail'
 import { brand } from './modules/brand'
 import { cart } from './modules/cart'
+import { order } from './modules/order'
 import { wishlist } from './modules/wishlist'
 import { shippingAddress } from './modules/shippingAddress'
 Vue.use(Vuex)
@@ -44,6 +45,7 @@ export default new Vuex.Store({
     productDetail,
     brand,
     cart,
+    order,
     wishlist,
     shippingAddress
   }

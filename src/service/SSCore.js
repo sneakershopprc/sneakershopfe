@@ -3,11 +3,12 @@ import authHeader from './auth-header'
 const API_URL = 'https://localhost:44303'
 
 class SSCore {
-  get (url, obj) {
+  get(url, obj) {
     return axios
       .get(API_URL + url, {
-        params: obj
-      }, { headers: authHeader() })
+        params: obj,
+        headers: authHeader()
+      })
       .then(response => {
         return response
       }).catch(error => {
@@ -16,7 +17,7 @@ class SSCore {
       })
   }
 
-  post (url, obj) {
+  post(url, obj) {
     return axios
       .post(API_URL + url, obj, { headers: authHeader() })
       .then(response => {
@@ -27,7 +28,7 @@ class SSCore {
       })
   }
 
-  put (url, obj) {
+  put(url, obj) {
     return axios
       .put(API_URL + url, obj, { headers: authHeader() })
       .then(response => {
@@ -38,11 +39,12 @@ class SSCore {
       })
   }
 
-  delete (url, obj) {
+  delete(url, obj) {
     return axios
       .delete(API_URL + url, {
-        params: obj
-      }, { headers: authHeader() })
+        params: obj,
+        headers: authHeader()
+      })
       .then(response => {
         return response
       }).catch(error => {

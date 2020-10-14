@@ -91,7 +91,11 @@
         <div class="col-md-9 col-sm-9 col-xs-12">
           <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>
 
-          <v-row dense>
+          <v-row
+            dense
+            v-if="_productList.length > 0"
+            v-show="_productList.length > 0"
+          >
             <v-col cols="12" sm="8" class="pl-6 pt-6">
               <small
                 >Showing {{ itemFrom }}-{{ itemTo }} of
@@ -111,7 +115,10 @@
             </v-col>
           </v-row>
 
-          <v-divider></v-divider>
+          <v-divider
+            v-if="_productList.length > 0"
+            v-show="_productList.length > 0"
+          ></v-divider>
           <v-row class="d-flex mt-5 justify-center">
             <v-progress-circular
               :size="50"
@@ -120,7 +127,11 @@
               v-if="loading"
             ></v-progress-circular>
           </v-row>
-          <div class="row text-center" v-if="!loading">
+          <div
+            class="row text-center"
+            v-if="!loading && _productList.length > 0"
+            v-show="!loading && _productList.length > 0"
+          >
             <div
               class="col-md-4 col-sm-6 col-xs-12"
               :key="pro.productId"
@@ -183,8 +194,8 @@
           </div>
           <div
             class="text-center mt-12"
-            v-if="isShowPaging"
-            v-show="isShowPaging"
+            v-if="isShowPaging && _productList.length > 0"
+            v-show="isShowPaging && _productList.length > 0"
           >
             <v-pagination
               v-model="page"
@@ -194,6 +205,15 @@
               @previous="pagingProduct()"
             ></v-pagination>
           </div>
+          <v-container v-if="_productList.length == 0">
+            <v-row>
+              <v-col cols="12">
+                <h2 style="color: grey; text-align: center">
+                  NO PRODUCT IS MATCHED
+                </h2>
+              </v-col>
+            </v-row>
+          </v-container>
         </div>
       </div>
     </v-container>
@@ -389,20 +409,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.v-card--reveal {
-  align-items: center;
-  bottom: 0;
-  justify-content: center;
-  opacity: 0.8;
-  position: absolute;
-  width: 100%;
-}
-.v-responsive__content .brandName {
-  height: 24px;
-  padding: 0;
-  justify-content: flex-end;
-  font-size: 16px;
-}
-</style>
