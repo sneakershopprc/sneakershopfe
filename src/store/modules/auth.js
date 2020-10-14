@@ -1,6 +1,6 @@
 // import axios from 'axios'
 import SSCore from '../../service/SSCore'
-const API_URL = '/api/v1/Auth'
+const API_URL = '/api/login'
 
 const user = JSON.parse(localStorage.getItem('UserInfo'))
 const initialState = user

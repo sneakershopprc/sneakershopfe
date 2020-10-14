@@ -21,7 +21,7 @@
         style="background-color: transparent !important"
         v-if="!_status.loggedIn"
         v-show="!_status.loggedIn"
-        @click="login()"
+        @click="$router.push('login')"
       >
         Login
       </v-btn>
@@ -117,7 +117,7 @@
           <v-card max-width="400" tile>
             <v-list dense shaped flat rounded>
               <v-list-item-group color="primary">
-                <v-list-item @click="logout">
+                <v-list-item>
                   <v-list-item-title>
                     My Profile
                     <v-icon>mdi-account</v-icon>
@@ -223,14 +223,6 @@ export default {
       }
     },
     login() {
-      localStorage.setItem(
-        "UserInfo",
-        JSON.stringify({
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJzb25tYXAiLCJyb2xlIjoiY3VzdG9tZXIiLCJuYmYiOjE2MDIzOTk5NDcsImV4cCI6MTYwNzU4Mzk0NywiaWF0IjoxNjAyMzk5OTQ3LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxLyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEvIn0.BMUazBJeDZ_eMGdqLBAdU_fWvA1zaEAQ4HEmH1MTe_8",
-        })
-      );
-      window.location.reload();
     },
     logout() {
       this._logout();

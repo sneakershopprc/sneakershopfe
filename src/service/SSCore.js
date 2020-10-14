@@ -12,7 +12,6 @@ class SSCore {
       .then(response => {
         return response
       }).catch(error => {
-        alert(error)
         console.log(error)
       })
   }
@@ -23,7 +22,6 @@ class SSCore {
       .then(response => {
         return response
       }).catch(error => {
-        alert(error)
         console.log(error)
       })
   }
@@ -34,7 +32,6 @@ class SSCore {
       .then(response => {
         return response
       }).catch(error => {
-        alert(error)
         console.log(error)
       })
   }
@@ -48,7 +45,6 @@ class SSCore {
       .then(response => {
         return response
       }).catch(error => {
-        alert(error)
         console.log(error)
       })
   }

@@ -1,17 +1,23 @@
 <template>
   <v-container>
     <p class="display-3 font-weight-light text-center pa-4">ORDER HISTORY</p>
-    <!-- <v-row>
-        <v-col cols="12">
-          <h1 style="color: grey; text-align: center">YOU DON'T HAVE ANY ORDER</h1>
-        </v-col>
-        <v-col cols="12">
-          <h2 style="color: grey; text-align: center">
-            Please go shopping at <a href="/shop">Here</a>
-          </h2>
-        </v-col>
-      </v-row>-->
-    <v-container :loading="loading">
+    <v-row v-if="_orderList.length == 0" v-show="_orderList.length == 0">
+      <v-col cols="12">
+        <h1 style="color: grey; text-align: center">
+          YOU DON'T HAVE ANY ORDER
+        </h1>
+      </v-col>
+      <v-col cols="12">
+        <h2 style="color: grey; text-align: center">
+          Please go shopping at <a href="/shop">Here</a>
+        </h2>
+      </v-col>
+    </v-row>
+    <v-container
+      :loading="loading"
+      v-if="_orderList.length > 0"
+      v-show="_orderList.length > 0"
+    >
       <v-card
         class="mb-10"
         style="text-align: center"
