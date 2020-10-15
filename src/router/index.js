@@ -87,11 +87,13 @@ const routes = [
 ]
 
 const router = new Router({
-  routes
+  routes,
+  mode: 'history'
 })
 router.beforeEach((to, from, next) => {
-  const publicPages = ['Login', 'SignUp']
-  const authRequired = !publicPages.includes(to.name)
+  const publicPages1 = ['Login', 'SignUp',]
+  const publicPages2 = ['Shop', 'Home', 'Product']
+  const authRequired = !publicPages1.includes(to.name) && !publicPages2.includes(to.name)
   const user = JSON.parse(localStorage.getItem('UserInfo'))
   // trying to access a restricted page + not logged in
   // redirect to login page
@@ -103,8 +105,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else {
-    // đã đăng nhập
-    if (!authRequired) {
+    if (publicPages1.includes(to.name)) {
       next('/')
     } else {
       next()
