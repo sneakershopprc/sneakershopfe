@@ -106,18 +106,18 @@
             <v-list-item>
               <v-list-item-avatar>
                 <img
-                  src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.0-9/p960x960/67153587_1328941540620886_8184798332787359744_o.jpg?_nc_cat=110&_nc_sid=7aed08&_nc_ohc=eZsOMsZtKUwAX9GGfNt&_nc_ht=scontent.fsgn5-3.fna&tp=6&oh=6aafc21e6c4fb302441f4f9600c2a42a&oe=5FA88762"
+                  :src="_user.photo"
                 />
               </v-list-item-avatar>
               <v-list-item-content>
-                <v-list-item-title>Nguyen The Son</v-list-item-title>
+                <v-list-item-title>{{ _user.fullname }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
           <v-card max-width="400" tile>
             <v-list dense shaped flat rounded>
               <v-list-item-group color="primary">
-                <v-list-item>
+                <v-list-item @click="goProfile">
                   <v-list-item-title>
                     My Profile
                     <v-icon>mdi-account</v-icon>
@@ -197,7 +197,7 @@ import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   components: {},
   computed: {
-    ...mapState("auth", ["_status"]),
+    ...mapState("auth", ["_status", "_user"]),
   },
   data() {
     return {
@@ -228,6 +228,9 @@ export default {
       this._logout();
       window.location.reload();
     },
+    goProfile() {
+      this.$router.push('profile')
+    }
   },
 };
 </script>

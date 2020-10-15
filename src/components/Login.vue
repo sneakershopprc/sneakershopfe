@@ -36,7 +36,7 @@
         <div class="w-full text-center p-t-5">
           <span class="txt2">Not a member?</span>
 
-          <a href="#" class="txt2 bo1">Sign up now</a>
+          <a @click="signUp" class="txt2 bo1">Sign up now</a>
         </div>
       </v-col>
     </v-row>
@@ -89,6 +89,9 @@ export default {
         } // end this.user.username && this.user.password
       } // end valid
     },
+    signUp() {
+      this.$router.push("/signup");
+    }
   },
 };
 </script>

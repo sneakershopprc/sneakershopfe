@@ -11,6 +11,8 @@ import CheckOut from '@/components/CheckOut'
 import WishList from '@/components/Wishlist'
 import History from '@/components/History'
 import Login from '@/components/Login'
+import SignUp from '@/components/SignUp'
+import Profile from '@/components/Profile'
 
 Vue.use(Router)
 
@@ -29,6 +31,16 @@ export default new Router({
           path: '/login',
           component: Login,
           name: 'Login'
+        },
+        {
+          path: '/signup',
+          component: SignUp,
+          name: 'SignUp'
+        },
+        {
+          path: '/profile',
+          component: Profile,
+          name: 'Profile'
         },
         {
           path: '/shop',

@@ -3,18 +3,21 @@ import SSCore from '../../service/SSCore'
 const API_URL = '/api/login'
 
 const user = JSON.parse(localStorage.getItem('UserInfo'))
-const initialState = user
+const initialState = user 
   ? {
     _status: {
       loggedIn: true
     },
-    user
+    _user: user
   }
   : {
     _status: {
       loggedIn: false
     },
-    user: null
+    _user: {
+      fullname: '',
+      photo: ''
+    }
   }
 
 export const auth = {
@@ -49,6 +52,8 @@ export const auth = {
         response => {
           if (response.data.token) {
             localStorage.setItem('UserInfo', JSON.stringify(response.data))
+            context.state._user = response.data
+            context.state._status.loggedIn = true
             context.commit('_loginSuccess', user)
           }
           return response.data
@@ -65,13 +70,11 @@ export const auth = {
       commit('_logout')
     },
     _register (context, user) {
-      return SSCore.post(API_URL + '/Register', {
-        username: user.username,
-        email: user.email,
-        password: user.password
-      }).then(
-        response => {
-          context.commit('_registerSuccess')
+      return SSCore.post('/api/user', user)
+      .then(response => {
+          localStorage.setItem('UserInfo', JSON.stringify(response.data))
+          context.state._user = response.data
+          context.state._status.loggedIn = true
           return Promise.resolve(response.data)
         },
         error => {
@@ -79,6 +82,17 @@ export const auth = {
           return Promise.reject(error)
         }
       )
+    },
+    _updateProfile (context, user) {
+      return SSCore.put('/api/accounts', user)
+      .then(response => {
+        localStorage.setItem('UserInfo', JSON.stringify(response.data))
+        context.state._user = response.data
+        return Promise.resolve(response.data)
+      },
+      error => {
+        return Promise.reject(error)
+      })
     }
   }
 }
