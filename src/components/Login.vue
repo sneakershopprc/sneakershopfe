@@ -29,7 +29,7 @@
         <p class="error--text">
           {{ message }}
         </p>
-          <v-btn class="mb-5" style="width: 100%" @click="doLogin()"
+          <v-btn :loading="loading" class="mb-5" style="width: 100%" @click="doLogin()"
             >SIGN IN</v-btn
           >
         </v-form>
@@ -48,6 +48,7 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
+      loading: false,
       user: {
         username: "",
         password: "",
@@ -72,6 +73,7 @@ export default {
   methods: {
     ...mapActions("auth", ["_login"]),
     doLogin() {
+      this.loading = true
       const valid = this.$refs.form.validate();
       if (valid) {
         if (this.user.username && this.user.password) {
@@ -88,6 +90,7 @@ export default {
           );
         } // end this.user.username && this.user.password
       } // end valid
+      this.loading = false
     },
     signUp() {
       this.$router.push("/signup");
