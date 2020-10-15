@@ -226,7 +226,7 @@ export default {
     },
     logout() {
       this._logout();
-      window.location.reload();
+      // window.location.reload();
     },
   },
 };

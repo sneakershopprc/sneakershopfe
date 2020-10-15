@@ -205,7 +205,7 @@
               @previous="pagingProduct()"
             ></v-pagination>
           </div>
-          <v-container v-if="_productList.length == 0">
+          <v-container v-if="!loading && _productList.length == 0">
             <v-row>
               <v-col cols="12">
                 <h2 style="color: grey; text-align: center">

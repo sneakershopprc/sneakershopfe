@@ -7,8 +7,8 @@
       <v-row>
         <v-col :cols="12" md="9" sm="12">
           <v-card flat>
-            <v-snackbar v-model="snackbar" absolute top right color="success">
-              <span>Registration successful!</span>
+            <v-snackbar v-model="snackbar" absolute top right color="green">
+              <span>Checkout successful!</span>
               <v-icon dark> mdi-checkbox-marked-circle </v-icon>
             </v-snackbar>
             <v-form ref="form" lazy-validation @submit.prevent="submit">
@@ -204,6 +204,7 @@ export default {
     ) {
       this.initPage();
     } else {
+      location.reload();
       this.$router.push("/shop");
     }
   },
@@ -260,9 +261,10 @@ export default {
         });
         this.snackbar = true;
         this.resetForm();
-        this.isLoading = false;
+        location.reload();
         this.$router.push("/shop");
       }
+      this.isLoading = false;
     },
   },
 };
