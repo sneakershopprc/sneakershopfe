@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-container>
+      <p class="display-3 font-weight-light text-center pa-4">WISHLIST</p>
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>

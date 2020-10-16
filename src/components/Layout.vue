@@ -226,6 +226,7 @@ export default {
     },
     logout() {
       this._logout();
+      this.$router.push("/")
       // window.location.reload();
     },
     goProfile() {
