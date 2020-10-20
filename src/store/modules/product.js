@@ -20,14 +20,14 @@ export const product = {
         _setTotalPage(state, _totalPage) {
             state._totalPage = _totalPage
         },
-        _setFlg(state, _initFlg) {
+        _setInitFlg(state, _initFlg) {
             state._initFlg = _initFlg
         }
     },
     actions: {
         _getProductList(context, obj) {
             let url = API_URL + `?Page=${obj.Page}&Size=${obj.Size}&SortBy=${obj.SortBy}`
-            if (!context.state._initFlg) {
+            if (!context.state._initFlg && obj.Color !== undefined && obj.MinPrice !== undefined && obj.MaxPrice !== undefined) {
                 if (obj.Color != "All") {
                     url += `&Color=${obj.Color}`
                 }
@@ -43,7 +43,7 @@ export const product = {
                     context.commit('_setProductList', response.data.data)
                     context.commit('_setTotalCount', response.data.totalCount)
                     context.commit('_setTotalPage', response.data.totalPages)
-                    context.commit('_setFlg', false)
+                    context.commit('_setInitFlg', false)
                     return response.data
                 },
                 error => {

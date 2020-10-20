@@ -8,7 +8,7 @@
             <v-divider></v-divider>
             <v-card-title class="pb-0">Brand</v-card-title>
             <v-container class="pt-0" fluid>
-              <v-for :key="brand.brandId" v-for="brand in _brandList">
+              <div :key="brand.brandId" v-for="brand in _brandList">
                 <v-checkbox
                   v-model="brandFilter"
                   :label="brand.brandNm"
@@ -17,7 +17,7 @@
                   dense
                   @change="loadPage()"
                 ></v-checkbox>
-              </v-for>
+              </div>
             </v-container>
             <v-divider></v-divider>
             <v-card-title>Price</v-card-title>
@@ -62,7 +62,7 @@
                 <v-row>
                   <v-col cols="6">
                     <v-radio
-                      :key="color"
+                      :key="color.label"
                       v-for="color in colors1"
                       :value="color.value"
                       :label="color.label"
@@ -73,7 +73,7 @@
                   </v-col>
                   <v-col cols="6">
                     <v-radio
-                      :key="color"
+                      :key="color.label"
                       v-for="color in colors2"
                       :value="color.value"
                       :label="color.label"
@@ -328,7 +328,7 @@ export default {
   methods: {
     ...mapActions("brand", ["_getBrandList"]),
     ...mapActions("product", ["_getProductList"]),
-    ...mapMutations("product", ["_setProductList"]),
+    ...mapMutations("product", ["_setProductList", "_setInitFlg"]),
     initData() {
       this.sizeOfPage = 9;
       this.page = 1;

@@ -9,7 +9,7 @@
       <!--      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />-->
 
       <v-toolbar-title style="width: 350px">
-        <a href="/" class="white--text" style="text-decoration: none"
+        <a  @click="$router.push('/')" class="white--text" style="text-decoration: none"
           ><v-icon>mdi-store</v-icon>&nbsp;Sneaker Store</a
         >
       </v-toolbar-title>
@@ -138,14 +138,14 @@
     </v-app-bar>
     <v-content>
       <v-bottom-navigation :value="activeBtn" color="primary" horizontal>
-        <a href="/" class="v-btn">
+        <a  @click="$router.push('/')" class="v-btn">
           <span>Home</span>
         </a>
-        <a href="/shop" class="v-btn">
+        <a  @click="$router.push('shop')" class="v-btn">
           <span>Shop</span>
         </a>
         <a
-          href="/wishlist"
+           @click="$router.push('wishlist')"
           class="v-btn"
           v-if="_status.loggedIn"
           v-show="_status.loggedIn"
@@ -153,7 +153,7 @@
           <span>Wishlist</span>
         </a>
         <a
-          href="/history"
+           @click="$router.push('history')"
           class="v-btn"
           style="width: 100px"
           v-if="_status.loggedIn"

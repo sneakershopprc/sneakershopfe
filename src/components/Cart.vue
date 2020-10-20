@@ -137,7 +137,7 @@
         </v-col>
         <v-col cols="12">
           <h2 style="color: grey; text-align: center">
-            Please go shopping at <a href="/shop">Here</a>
+            Please go shopping at <a  @click="$router.push('shop')">Here</a>
           </h2>
         </v-col>
       </v-row>

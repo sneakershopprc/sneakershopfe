@@ -45,7 +45,7 @@
           >
             <h1 class="text-center font-size">Top Picks</h1>
             <div class="text-center">
-              <v-btn href="/shop" class="white--text" outlined>SHOP NOW</v-btn>
+              <v-btn  @click="$router.push('shop')" class="white--text" outlined>SHOP NOW</v-btn>
             </div>
 
             <!--            <v-expand-transition>-->
@@ -73,7 +73,7 @@
           >
             <h1 class="text-center font-size">New Arrivals</h1>
             <div class="text-center">
-              <v-btn href="/shop" class="white--text" outlined>SHOP NOW</v-btn>
+              <v-btn  @click="$router.push('shop')" class="white--text" outlined>SHOP NOW</v-btn>
             </div>
           </v-img>
         </v-card>
@@ -90,7 +90,7 @@
           >
             <h1 class="text-center font-size">Lorem & Ipsum</h1>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption" href="/shop" text
+              <v-btn class="white--text caption"  @click="$router.push('shop')" text
                 >SHOP NOW
                 <v-icon class="white--text caption"
                   >mdi-arrow-right</v-icon
@@ -110,7 +110,7 @@
           >
             <h1 class="text-center font-size">Lorem & Ipsum</h1>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption" href="/shop" text
+              <v-btn class="white--text caption"  @click="$router.push('shop')" text
                 >SHOP NOW
                 <v-icon class="white--text caption"
                   >mdi-arrow-right</v-icon
@@ -130,7 +130,7 @@
           >
             <h1 class="text-center font-size">Lorem & Ipsum</h1>
             <div class="text-center mt-2">
-              <v-btn class="white--text caption" href="/shop" text
+              <v-btn class="white--text caption"  @click="$router.push('shop')" text
                 >SHOP NOW
                 <v-icon class="white--text caption"
                   >mdi-arrow-right</v-icon
