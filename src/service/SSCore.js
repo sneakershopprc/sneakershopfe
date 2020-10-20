@@ -1,6 +1,7 @@
 import axios from 'axios'
 import authHeader from './auth-header'
-const API_URL = 'https://localhost:44303'
+// const API_URL = 'https://localhost:44303'
+const API_URL = 'https://sneakershopprc391.azurewebsites.net'
 
 class SSCore {
   get(url, obj) {
