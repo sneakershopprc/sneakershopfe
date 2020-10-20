@@ -1,34 +1,34 @@
 <template>
   <div>
     <v-carousel hide-delimiters>
-      <v-carousel-item :src="require('../assets/img/home/slider4.jpg')">
+      <v-carousel-item src="https://www.converse.com.vn/pictures/catalog/home/slide-homepage/banner-slide-FOG.jpg">
         <v-row class="fill-height" align="center" justify="center">
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Upto 60% + Extra 10%</strong>
+          <div class="display-2 hidden-sm-only">
+            <strong style="position: absolute; left: 10%; bottom: 2%;">Upto 60% + Extra 10%</strong>
           </div>
           <br />
         </v-row>
       </v-carousel-item>
-      <v-carousel-item :src="require('../assets/img/home/slider2.jpg')">
+      <v-carousel-item src="https://brand.assets.adidas.com/image/upload/f_auto,q_auto,fl_lossy/enUS/Images/xcat-ss20-nav-clp-mens-sneakers-tc-large-d_tcm221-509820.jpg">
         <v-row class="fill-height" align="center" justify="center">
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Upto 60% + Extra 10%</strong>
+          <div class="display-2 white--text hidden-sm-only">
+            <strong>Upto 40% + Extra 10%</strong>
           </div>
           <br />
         </v-row>
       </v-carousel-item>
-      <v-carousel-item :src="require('../assets/img/home/slider3.jpg')">
+      <v-carousel-item src="https://img.bleacherreport.net/img/slides/photos/004/367/989/014fc49d06c8fe2e38662b25d9f6ab2b_crop_exact.jpg?w=2975&h=2048&q=85">
         <v-row class="fill-height" align="center" justify="center">
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Upto 60% + Extra 10%</strong>
+          <div class="display-2 white--text hidden-sm-only">
+            <strong  style="position: absolute; right: 10%; bottom: 18%;">Sale Upto 50%</strong>
           </div>
           <br />
         </v-row>
       </v-carousel-item>
-      <v-carousel-item :src="require('../assets/img/home/slider1.jpg')">
+      <v-carousel-item src="https://cdn.vox-cdn.com/thumbor/1ieEr5JfJiBhBPS_GKG0n2N2Ai4=/1400x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/13681381/fshivakumar_181109_3078_0020.jpg">
         <v-row class="fill-height" align="center" justify="center">
-          <div class="display-2 white--text pl-5 pr-5 hidden-sm-only">
-            <strong>Upto 60% + Extra 10%</strong>
+          <div class="display-2 white--text hidden-sm-only">
+            <strong style="position: absolute; right: 5%; top: 2%;">Upto 60% + Extra 10%</strong>
           </div>
           <br />
         </v-row>
@@ -38,7 +38,7 @@
       <div class="col-md-6 col-sm-6 col-xs-12">
         <v-card>
           <v-img
-            :src="require('../assets/img/home/slider2.jpg')"
+            src="https://www.famousfootwear.com/c/-/media/project/famousfootwear/brand-landing-pages/converse/2020/bts/mobile/fashion.jpg?h=1310&w=1388&la=en&hash=7117AF2B7A790682ACACBE070708C6B595E58F75"
             class="white--text align-center"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="400px"
@@ -66,7 +66,7 @@
       <div class="col-md-6 col-sm-6 col-xs-12">
         <v-card>
           <v-img
-            :src="require('../assets/img/home/slider3.jpg')"
+            src="https://static.dezeen.com/uploads/2019/04/futurecraft-loop-adidas-design-shoes-plastic_dezeen_2364_sq2.jpg"
             class="white--text align-center"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="400px"
@@ -83,7 +83,7 @@
       <div class="col-md-4 col-sm-4 col-xs-12">
         <v-card outlined>
           <v-img
-            :src="require('../assets/img/home/deal2.jpg')"
+            src="https://dosi-in.com/images/news_content/18411/2020/09/15/top-5-collab-sneaker-rat-thanh-cong-giua-nike-cung-nhieu-thuong-hieu-khac_2020_09_15_7.jpg"
             class="white--text align-center"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="300px"
@@ -103,7 +103,7 @@
       <div class="col-md-4 col-sm-4 col-xs-12">
         <v-card outlined>
           <v-img
-            :src="require('../assets/img/home/deal3.jpg')"
+            src="https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/01/05-the-puzzle-like-pattern-on-these-nike-sneakers-cuts.jpg"
             class="white--text align-center"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="300px"
@@ -123,7 +123,7 @@
       <div class="col-md-4 col-sm-4 col-xs-12">
         <v-card outlined>
           <v-img
-            :src="require('../assets/img/home/deal4.jpg')"
+            src="https://media.gq.com/photos/5a73042cb7c0b85841402917/1:1/w_3000,h_3000,c_limit/adidas-boost-GQ-nils-08.jpg"
             class="white--text align-center"
             gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             height="300px"

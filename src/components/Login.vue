@@ -2,7 +2,7 @@
   <v-container class="px-12">
     <p class="display-3 font-weight-light text-center pa-4">SIGN IN</p>
     <v-row justify="center">
-      <v-col cols="6">
+      <v-col :md="6" :sm="10">
         <v-form ref="form" lazy-validation>
           <v-text-field
             ref="username"
