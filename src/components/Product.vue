@@ -16,7 +16,7 @@
           </v-carousel-item>
         </v-carousel>
       </div>
-      <div class="col-md-4 col-sm-12 col-xs-12">
+      <div class="col-md-4 col-sm-24 col-xs-24">
         <v-breadcrumbs class="pb-5" :items="breadcrums"></v-breadcrumbs>
         <div class="pl-6">
           <p class="display-1 mb-0">{{ _productDetail.productNm }}</p>
@@ -60,7 +60,7 @@
             dense
           ></v-text-field>
           <v-btn
-            class="primary white--text"
+            class="mt-1 primary white--text"
             outlined
             tile
             dense
@@ -68,7 +68,7 @@
             ><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn
           >
           <v-btn
-            class="ml-4"
+            class="mt-1 offset-xl-1 offset-lg-0 offset-md-0 offset-sm-0"
             outlined
             tile
             v-if="!isLiked"
@@ -77,7 +77,7 @@
             ><v-icon>mdi-heart</v-icon> ADD TO WISHLIST</v-btn
           >
           <v-btn
-            class="ml-4"
+            class="mt-1 offset-xl-1 offset-lg-0 offset-md-0 offset-sm-0"
             outlined
             tile
             :loading="isLoading"
@@ -136,7 +136,7 @@
                       >
                         <v-btn
                           v-if="hover"
-                          @click="$router.push(`/product?productId=${pro.productId}`)"
+                          @click="$router.replace(`/product?productId=${pro.productId}`)"
                           class=""
                           outlined
                           >VIEW</v-btn
@@ -147,7 +147,7 @@
                   <v-card-text class="text--primary">
                     <div>
                       <a
-                        @click="$router.push(`/product?productId=${pro.productId}`)"
+                        @click="$router.replace(`/product?productId=${pro.productId}`)"
                         style="text-decoration: none"
                         >{{ pro.productNm }}</a
                       >
