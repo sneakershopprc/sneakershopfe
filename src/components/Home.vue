@@ -104,7 +104,7 @@
                         >
                           <v-btn
                             v-if="hover"
-                            :href="'/product?productId=' + pro.productId"
+                            @click="$router.push(`/product?productId=${pro.productId}`)"
                             class=""
                             outlined
                             >VIEW</v-btn
@@ -115,7 +115,7 @@
                     <v-card-text class="text--primary">
                       <div>
                         <a
-                          :href="'/product?productId=' + pro.productId"
+                          @click="$router.push(`/product?productId=${pro.productId}`)"
                           style="text-decoration: none"
                           >{{ pro.productNm }}</a
                         >

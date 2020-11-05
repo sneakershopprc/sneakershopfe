@@ -198,24 +198,7 @@ export default {
   data: () => ({
     cart: [],
     subTotal: 0,
-    shippingCharges: 10,
-    breadcrums: [
-      {
-        text: "Home",
-        disabled: false,
-        href: "breadcrumbs_home",
-      },
-      {
-        text: "Clothing",
-        disabled: false,
-        href: "breadcrumbs_clothing",
-      },
-      {
-        text: "T-Shirts",
-        disabled: true,
-        href: "breadcrumbs_shirts",
-      },
-    ],
+    shippingCharges: 10
   }),
   mounted() {
     this.initPage();

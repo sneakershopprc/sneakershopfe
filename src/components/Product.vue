@@ -136,7 +136,7 @@
                       >
                         <v-btn
                           v-if="hover"
-                          :href="'/product?productId=' + pro.productId"
+                          @click="$router.push(`/product?productId=${pro.productId}`)"
                           class=""
                           outlined
                           >VIEW</v-btn
@@ -147,7 +147,7 @@
                   <v-card-text class="text--primary">
                     <div>
                       <a
-                        :href="'/product?productId=' + pro.productId"
+                        @click="$router.push(`/product?productId=${pro.productId}`)"
                         style="text-decoration: none"
                         >{{ pro.productNm }}</a
                       >
@@ -232,18 +232,15 @@ export default {
     breadcrums: [
       {
         text: "Home",
-        disabled: false,
-        href: "breadcrumbs_home",
+        disabled: false
       },
       {
         text: "Shopping",
-        disabled: false,
-        href: "breadcrumbs_clothing",
+        disabled: false
       },
       {
         text: "Product",
-        disabled: true,
-        href: "breadcrumbs_shirts",
+        disabled: true
       },
     ],
   }),
