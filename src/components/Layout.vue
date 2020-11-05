@@ -173,14 +173,9 @@
         </v-card-text>
 
         <v-card-text class="white--text pt-0">
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-          Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-          accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim
-          a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
-          lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
-          iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum
-          tempor vel ut orci. Orci varius natoque penatibus et magnis dis
-          parturient montes, nascetur ridiculus mus.
+          Don't stop at building an ordinary sneaker store. <br/>
+          Sneaker-Store is also a place filled with inspirations, ideas and stories surrounding the culture close to the ground. <br/>
+          Come, experience and share your interesting story around the shoes!
         </v-card-text>
 
         <v-divider></v-divider>

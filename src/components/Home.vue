@@ -34,7 +34,7 @@
         </v-row>
       </v-carousel-item>
     </v-carousel>
-    <div class="pl-4 pr-4 row">
+    <div class="pt-4 pb-4 pl-6 pr-6 row">
       <div class="col-md-6 col-sm-6 col-xs-12">
         <v-card>
           <v-img
@@ -47,21 +47,8 @@
             <div class="text-center">
               <v-btn  @click="$router.push('shop')" class="white--text" outlined>SHOP NOW</v-btn>
             </div>
-
-            <!--            <v-expand-transition>-->
-            <!--              <div-->
-            <!--                v-if="hover"-->
-            <!--                class="d-flex transition-fast-in-fast-out orange darken-2 v-card&#45;&#45;reveal display-3 white&#45;&#45;text"-->
-            <!--                style="height: 100%;"-->
-            <!--              >-->
-
-            <!--                <h3>Top Picks</h3><br/>-->
-            <!--                <h3>sdfs</h3>-->
-            <!--              </div>-->
-            <!--            </v-expand-transition>-->
           </v-img>
         </v-card>
-        <!--        </v-hover>-->
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12">
         <v-card>
@@ -74,68 +61,6 @@
             <h1 class="text-center font-size">New Arrivals</h1>
             <div class="text-center">
               <v-btn  @click="$router.push('shop')" class="white--text" outlined>SHOP NOW</v-btn>
-            </div>
-          </v-img>
-        </v-card>
-      </div>
-    </div>
-    <div class="pl-4 pr-4 row">
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <v-card outlined>
-          <v-img
-            src="https://dosi-in.com/images/news_content/18411/2020/09/15/top-5-collab-sneaker-rat-thanh-cong-giua-nike-cung-nhieu-thuong-hieu-khac_2020_09_15_7.jpg"
-            class="white--text align-center"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="300px"
-          >
-            <h1 class="text-center font-size">Lorem & Ipsum</h1>
-            <div class="text-center mt-2">
-              <v-btn class="white--text caption"  @click="$router.push('shop')" text
-                >SHOP NOW
-                <v-icon class="white--text caption"
-                  >mdi-arrow-right</v-icon
-                ></v-btn
-              >
-            </div>
-          </v-img>
-        </v-card>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <v-card outlined>
-          <v-img
-            src="https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2020/01/05-the-puzzle-like-pattern-on-these-nike-sneakers-cuts.jpg"
-            class="white--text align-center"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="300px"
-          >
-            <h1 class="text-center font-size">Lorem & Ipsum</h1>
-            <div class="text-center mt-2">
-              <v-btn class="white--text caption"  @click="$router.push('shop')" text
-                >SHOP NOW
-                <v-icon class="white--text caption"
-                  >mdi-arrow-right</v-icon
-                ></v-btn
-              >
-            </div>
-          </v-img>
-        </v-card>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <v-card outlined>
-          <v-img
-            src="https://media.gq.com/photos/5a73042cb7c0b85841402917/1:1/w_3000,h_3000,c_limit/adidas-boost-GQ-nils-08.jpg"
-            class="white--text align-center"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="300px"
-          >
-            <h1 class="text-center font-size">Lorem & Ipsum</h1>
-            <div class="text-center mt-2">
-              <v-btn class="white--text caption"  @click="$router.push('shop')" text
-                >SHOP NOW
-                <v-icon class="white--text caption"
-                  >mdi-arrow-right</v-icon
-                ></v-btn
-              >
             </div>
           </v-img>
         </v-card>
@@ -214,45 +139,6 @@
         </div>
       </div>
     </v-container>
-    <v-card class="accent">
-      <v-container>
-        <v-row no-gutters>
-          <v-col class="col-12 col-md-4 col-sm-12">
-            <v-row>
-              <v-col class="col-12 col-sm-3 pr-4" align="right">
-                <v-icon class="display-2">mdi-truck</v-icon>
-              </v-col>
-              <v-col class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">FREE SHIPPING & RETURN</h3>
-                <p class="font-weight-thin">Free Shipping over $300</p>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col class="col-12 col-md-4 col-sm-12">
-            <v-row>
-              <v-col class="col-12 col-sm-3 pr-4" align="right">
-                <v-icon class="display-2">mdi-cash-usd</v-icon>
-              </v-col>
-              <v-col class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">MONEY BACK GUARANTEE</h3>
-                <p class="font-weight-thin">30 Days Money Back Guarantee</p>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col class="col-12 col-md-4 col-sm-12">
-            <v-row>
-              <v-col class="col-12 col-sm-3 pr-4" align="right">
-                <v-icon class="display-2">mdi-headset</v-icon>
-              </v-col>
-              <v-col class="col-12 col-sm-9 pr-4">
-                <h3 class="font-weight-light">020-800-456-747</h3>
-                <p class="font-weight-thin">24/7 Available Support</p>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-card>
   </div>
 </template>
 
