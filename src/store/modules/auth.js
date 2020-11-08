@@ -86,6 +86,8 @@ export const auth = {
     _updateProfile (context, user) {
       return SSCore.put('/api/accounts', user)
       .then(response => {
+        const token = JSON.parse(localStorage.getItem('UserInfo')).token
+        response.data.token = token
         localStorage.setItem('UserInfo', JSON.stringify(response.data))
         context.state._user = response.data
         return Promise.resolve(response.data)
