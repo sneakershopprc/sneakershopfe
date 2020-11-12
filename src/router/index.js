@@ -76,6 +76,13 @@ const routes = [
 
 const router = new Router({
   routes,
+  scrollBehavior (to, from, savedPosition) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 0)
+    })
+  },
   mode: 'history'
 })
 router.beforeEach((to, from, next) => {
