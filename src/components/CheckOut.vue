@@ -204,7 +204,6 @@ export default {
     ) {
       this.initPage();
     } else {
-      location.reload();
       this.$router.push("/shop");
     }
   },
@@ -261,7 +260,6 @@ export default {
         });
         this.snackbar = true;
         this.resetForm();
-        location.reload();
         this.$router.push("/shop");
       }
       this.isLoading = false;
