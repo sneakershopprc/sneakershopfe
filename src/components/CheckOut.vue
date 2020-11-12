@@ -259,6 +259,7 @@ export default {
           ShippingAddress: address,
         });
         this.snackbar = true;
+        this.$emit("updateCart");
         this.resetForm();
         this.$router.push("/shop");
       }
